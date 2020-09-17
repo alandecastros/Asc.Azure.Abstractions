@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.Azure.Cosmos.Table;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Asc.Azure.Abstractions
 {
-    public interface ITableRepository<T>
+    public interface ITableRepository<T> where T : TableEntity, new()
     {
         Task<T> Get(string partitionKey, string rowKey);
         Task<IList<T>> GetByPartition(string partitionKey);
